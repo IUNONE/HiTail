@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="We propose a hierarchical neural trajectory planner, which exhibits superior adaptability in long-tail scenarios and showcases flexibility to integrate manually defined rule sets adapting to different driving styles.">
+  <meta name="keywords" content="Dreamitate, Visuomotor Policy Learning via Video Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AFTPLongTail</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LXYT8JKE1N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LXYT8JKE1N');
+</script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="assets/figures/movie.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- Titles -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2"> &nbsp; Hierarchical Neural Planner for Adaptive and Flexible Trajectory Planning in Long-Tail Scenarios &nbsp;
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://shenghongzhang.github.io/">Shenghong Zhang</a><sup>*1</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/xiangyuzhouME">Xiangyu Zhou</a><sup>*1</sup>,</span>
+            <span class="author-block">
+              <a href="https://xli4217.github.io/">Xiao Li</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University,</span>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Overview -->
+<!-- <div class="container is-max-desktop">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <div class="subtitle has-text-centered">
+        <p>
+          We propose a hierarchical neural trajectory planner, which exhibits superior adaptability in long-tail scenarios 
+          and showcases flexibility to integrate manually defined rule sets adapting to different driving styles.
+        </p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Abstract. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            A planner for autonomous vehicles must be capable of operating in diverse and complex real-world environments.
+            However, learning-based planners often struggle with limited generalization due to the long-tail distribution in datasets.
+            Moreover, the black-box nature of neural networks limits their interpretability and complicates the integration of explicit rules.
+            In this letter, we propose a hierarchical neural trajectory planner that takes the bird's-eye view (BEV) rasters as input. 
+            The planner operates in two phases: in the first, spatial proposals are sampled from a policy generated from interpretable learned reward maps, 
+            and in the second, learnable temporal velocity profiles are assigned to the spatial proposals using clothoid curves.
+            We conduct training and closed-loop simulation on the nuPlan dataset, and the results demonstrate that our proposed planner
+            outperforms other learning-based methods, exhibiting superior adaptability in long-tail scenarios. 
+            Additionally, we explore the scalability of our planner in flexibly integrating manually defined rule sets. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+      <div class="column is-full">
+        <video id="paperbot-summary" controls playsinline style="width: 100%; height: auto;">
+          <source src="./assets/videos/video.mp4" type="video/mp4">
+        </video>
+      </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<!--/ Metrics. -->
+<section class="section">
+
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Evaluation</h2>
+
+    <div class="columns is-centered">
+        <div class="publication-banner">
+          <!-- add an image -->
+          <img src="assets/figures/quantitative_results.png"
+                alt="Evaluation"
+                class="publication-banner"
+                style="width: 100%; display: block; margin-left: auto; margin-right: auto;"
+                >
+        </div>
+    </div>
+    <span class="dnerf-nocaps" style="display: block; text-align: center;">
+      In our evaluation, we tested in nuPlan closed-loop non-reactive simulatior. Our approach outperforms other learning-based methods, especially in the long-tail scenarios.
+    </span>
+  </div>
+</section>
+
+<!--/ Cases. -->
+<section class="hero is-light is-small m-6">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Comparison Cases</h2>
+      <div class="content">
+        <div class="columns is-multiline" style="margin-top: 2em; padding-bottom: 20px;">
+          <div class="column is-one-quarter has-text-centered">
+            <a href="https://github.com/autonomousvision/tuplan_garage" class="is-size-5 has-text-weight-bold">
+              PDM-Hybrid<sup>[1]</sup>
+            </a>
+          </div>
+          <div class="column is-one-quarter has-text-centered">
+            <a href="https://github.com/MCZhi/GameFormer-Planner" class="is-size-5 has-text-weight-bold">
+              GameFormer<sup>[2]</sup>
+            </a>
+          </div>
+          <div class="column is-one-quarter has-text-centered">
+            <a href="https://github.com/jchengai/planTF" class="is-size-5 has-text-weight-bold">
+              planTF<sup>[3]</sup>
+            </a>
+          </div>
+          <div class="column is-one-quarter has-text-centered">
+            <a href="https://github.com" class="is-size-5 has-text-weight-bold" style="color: chocolate;">
+              Ours
+            </a>
+          </div>
+        </div>
+        <!-- using the opposite lane to bypass illegal parking -->
+        <p style="text-align:left; font-size: 1.2em; font-weight: bold" class="serif">Using the opposite lane to bypass illegal parking</p>
+        <!-- 4d4b2303c0835859 -->
+        <div class="columns is-multiline" style="margin-top: 2px; padding-bottom: 2px;">
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/4d4b2303c0835859/pdm.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/4d4b2303c0835859/gameformer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/4d4b2303c0835859/plantf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/4d4b2303c0835859/reward.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <!-- 086858f98225598f -->
+        <div class="columns is-multiline" style="margin-top: 2px; padding-bottom: 20px;">
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/086858f98225598f/pdm.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/086858f98225598f/gameformer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/086858f98225598f/plantf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/086858f98225598f/reward.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <!-- starting from the road side -->
+        <p style="text-align:left; font-size: 1.2em; font-weight: bold" class="serif">Starting from the road side</p>
+        <!-- 5dd3b64159bb5dc1 -->
+        <div class="columns is-multiline" style="margin-top: 2px; padding-bottom: 2px;">
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/5dd3b64159bb5dc1/pdm.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/5dd3b64159bb5dc1/gameformer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/5dd3b64159bb5dc1/plantf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/5dd3b64159bb5dc1/reward.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <!-- travel through crowded narrow road  -->
+        <p style="text-align:left; font-size: 1.2em; font-weight: bold" class="serif">Traveling through crowded narrow road</p>
+        <!-- ed53c794b63f58b1 -->
+        <div class="columns is-multiline" style="margin-top: 2px; padding-bottom: 2px;">
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/ed53c794b63f58b1/pdm.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/ed53c794b63f58b1/gameformer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/ed53c794b63f58b1/plantf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/ed53c794b63f58b1/reward.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <!-- 0f4d46fc31a25c57 -->
+        <div class="columns is-multiline" style="margin-top: 2px; padding-bottom: 2px;">
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/0f4d46fc31a25c57/pdm.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/0f4d46fc31a25c57/gameformer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/0f4d46fc31a25c57/plantf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/0f4d46fc31a25c57/reward.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <!-- change lane for turning  -->
+        <p style="text-align:left; font-size: 1.2em; font-weight: bold" class="serif">Change lane for better turning</p>
+        <!-- a327faf539a35adc -->
+        <div class="columns is-multiline" style="margin-top: 2px; padding-bottom: 2px;">
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/a327faf539a35adc/pdm.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/a327faf539a35adc/gameformer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/a327faf539a35adc/plantf.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-quarter">
+            <video clickplay="" controls="" muted="" width="100%">
+              <source src="./assets/videos/cases/a327faf539a35adc/reward.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Acknowledgements. -->
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{liang2024dreamitate,
+  title={Dreamitate: Real-World Visuomotor Policy Learning via Video Generation}, 
+  author={Junbang Liang and Ruoshi Liu and Ege Ozguroglu and Sruthi Sudhakar and Achal Dave and Pavel Tokmakov and Shuran Song and Carl Vondrick},
+  year={2024},
+  eprint={2406.16862},
+  archivePrefix={arXiv},
+  primaryClass={id='cs.RO' full_name='Robotics' is_active=True alt_name=None in_archive='cs' is_general=False description='Roughly includes material in ACM Subject Class I.2.9.'}
+}</code></pre>
+  </div>
+</section> -->
+
+</body>
+</html>
